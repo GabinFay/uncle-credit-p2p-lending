@@ -16,6 +16,8 @@ export const wagmiConfig = createConfig({
   chains: enabledChains,
   connectors: wagmiConnectors,
   ssr: true,
+  // Disable auto-connect
+  multiInjectedProviderDiscovery: false,
   client({ chain }) {
     let rpcFallbacks = [http()];
 

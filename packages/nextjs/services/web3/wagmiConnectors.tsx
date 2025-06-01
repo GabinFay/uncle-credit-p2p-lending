@@ -20,7 +20,8 @@ const wallets = [
   coinbaseWallet,
   rainbowWallet,
   safeWallet,
-  ...(!targetNetworks.some(network => network.id !== (chains.hardhat as chains.Chain).id) || !onlyLocalBurnerWallet
+  // Only include burner wallet for local hardhat network
+  ...(targetNetworks.some(network => network.id === (chains.hardhat as chains.Chain).id) && !onlyLocalBurnerWallet
     ? [rainbowkitBurnerWallet]
     : []),
 ];
