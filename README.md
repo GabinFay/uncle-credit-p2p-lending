@@ -1,80 +1,249 @@
-# 🏗 Scaffold-ETH 2
+# Uncle Credit: P2P Lending Platform with Social Vouching
 
-<h4 align="center">
-  <a href="https://docs.scaffoldeth.io">Documentation</a> |
-  <a href="https://scaffoldeth.io">Website</a>
-</h4>
+## 🚀 Live Demo on Flow EVM Testnet
 
-🧪 An open-source, up-to-date toolkit for building decentralized applications (dapps) on the Ethereum blockchain. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
+**Try it now:** [Uncle Credit App](https://uncle-credit-p2p-lending.vercel.app) *(Coming soon)*
 
-⚙️ Built using NextJS, RainbowKit, Foundry, Wagmi, Viem, and Typescript.
+**Deployed Contracts on Flow EVM Testnet:**
+- 🪙 **MockERC20 (TUSDC)**: `0xB09f91f8E16C977186CAf7404BE7650cc4629B00`
+- 👥 **UserRegistry**: `0x16B081647deCEfb0a3Cb83e3e69a91e9931De70d`
+- ⭐ **Reputation**: `0x20cBdA8c47Db6582aE21182C4D0b995fed2b2A94`
+- 🏦 **P2PLending**: `0xe6FE723dBCac89487F1BEC20BA94795B44f3d4A5`
 
-- ✅ **Contract Hot Reload**: Your frontend auto-adapts to your smart contract as you edit it.
-- 🪝 **[Custom hooks](https://docs.scaffoldeth.io/hooks/)**: Collection of React hooks wrapper around [wagmi](https://wagmi.sh/) to simplify interactions with smart contracts with typescript autocompletion.
-- 🧱 [**Components**](https://docs.scaffoldeth.io/components/): Collection of common web3 components to quickly build your frontend.
-- 🔥 **Burner Wallet & Local Faucet**: Quickly test your application with a burner wallet and local faucet.
-- 🔐 **Integration with Wallet Providers**: Connect to different wallet providers and interact with the Ethereum network.
+**Explorer Links:**
+- [View Contracts on Flow Testnet Explorer](https://evm-testnet.flowscan.io)
 
-![Debug Contracts tab](https://github.com/scaffold-eth/scaffold-eth-2/assets/55535804/b237af0c-5027-4849-a5c1-2e31495cccb1)
+## 📋 Overview
 
-## Requirements
+Uncle Credit is a revolutionary P2P lending platform that combines traditional lending with social vouching mechanisms. Built on Flow EVM, it enables users to lend and borrow with community trust as collateral.
 
-Before you begin, you need to install the following tools:
+### 🌟 Key Features
 
-- [Node (>= v20.18.3)](https://nodejs.org/en/download/)
-- Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/) or [v2+](https://yarnpkg.com/getting-started/install))
-- [Git](https://git-scm.com/downloads)
+- **P2P Lending**: Direct lending between users with customizable terms
+- **Social Vouching**: Community members can vouch for borrowers with stake
+- **Reputation System**: Dynamic scoring based on lending/borrowing behavior
+- **Real Transactions**: All interactions are on-chain with Flow EVM
+- **Modern UI**: Beautiful, production-ready interface built with Next.js + shadcn/ui
 
-## Quickstart
+## 🛠 Technology Stack
 
-To get started with Scaffold-ETH 2, follow the steps below:
+### Smart Contracts
+- **Solidity 0.8.20** - Smart contract development
+- **Foundry** - Development framework and testing
+- **OpenZeppelin** - Security-audited contract libraries
 
-1. Install dependencies if it was skipped in CLI:
+### Frontend
+- **Next.js 14** - React framework with App Router
+- **TypeScript** - Type safety and developer experience
+- **Tailwind CSS** - Utility-first styling
+- **shadcn/ui** - Modern component library
+- **Wagmi v2** - React hooks for Ethereum
+- **RainbowKit** - Wallet connection interface
+
+### Blockchain
+- **Flow EVM Testnet** - Fast, developer-friendly EVM-compatible blockchain
+- **Chain ID**: 545
+- **RPC**: https://testnet.evm.nodes.onflow.org
+
+## 🏗 Architecture
+
+### Smart Contract System
 
 ```
-cd my-dapp-example
+UserRegistry.sol     - User registration and identity
+    ↓
+Reputation.sol       - Reputation scoring and social vouching
+    ↓
+P2PLending.sol       - Core P2P lending logic
+```
+
+### User Flows
+
+1. **Borrower Flow**: Register → Request Loan → Accept Offer → Repay
+2. **Lender Flow**: Register → Create Offer → Fund Loans → Receive Repayments
+3. **Voucher Flow**: Register → Vouch for Borrowers → Earn/Lose Reputation
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18+ and yarn
+- Git
+- MetaMask or compatible wallet
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/GabinFay/uncle-credit-p2p-lending.git
+cd uncle-credit-p2p-lending
+
+# Install dependencies
+cd packages/nextjs
 yarn install
+
+# Set up environment variables
+cp .env.example .env.local
+# Edit .env.local with your configuration
+
+# Start the development server
+yarn dev
 ```
 
-2. Run a local network in the first terminal:
+### Smart Contract Development
 
-```
-yarn chain
-```
+```bash
+# Navigate to foundry package
+cd packages/foundry
 
-This command starts a local Ethereum network using Foundry. The network runs on your local machine and can be used for testing and development. You can customize the network configuration in `packages/foundry/foundry.toml`.
+# Install dependencies
+forge install
 
-3. On a second terminal, deploy the test contract:
+# Compile contracts
+forge build
 
-```
-yarn deploy
-```
+# Run tests
+forge test
 
-This command deploys a test smart contract to the local network. The contract is located in `packages/foundry/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/foundry/script` to deploy the contract to the network. You can also customize the deploy script.
-
-4. On a third terminal, start your NextJS app:
-
-```
-yarn start
+# Deploy to Flow Testnet (requires PRIVATE_KEY in .env)
+forge script script/DeployUncleCreditContracts.s.sol:DeployUncleCreditContracts --fork-url https://testnet.evm.nodes.onflow.org --broadcast --legacy --private-key $PRIVATE_KEY
 ```
 
-Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page. You can tweak the app config in `packages/nextjs/scaffold.config.ts`.
+## 📖 How It Works
 
-Run smart contract test with `yarn foundry:test`
+### 1. User Registration
+Users register with a display name (World ID integration planned for future)
 
-- Edit your smart contracts in `packages/foundry/contracts`
-- Edit your frontend homepage at `packages/nextjs/app/page.tsx`. For guidance on [routing](https://nextjs.org/docs/app/building-your-application/routing/defining-routes) and configuring [pages/layouts](https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts) checkout the Next.js documentation.
-- Edit your deployment scripts in `packages/foundry/script`
+### 2. Creating Loan Offers (Lenders)
+```solidity
+function createLoanOffer(
+    uint256 amount,
+    address token,
+    uint16 interestRateBPS,
+    uint256 durationSeconds,
+    uint256 requiredCollateralAmount,
+    address collateralToken
+) external returns (bytes32 offerId)
+```
 
+### 3. Loan Requests (Borrowers)
+```solidity
+function createLoanRequest(
+    uint256 amount,
+    address token,
+    uint16 proposedInterestRateBPS,
+    uint256 proposedDurationSeconds,
+    uint256 offeredCollateralAmount,
+    address offeredCollateralToken
+) external returns (bytes32 requestId)
+```
 
-## Documentation
+### 4. Social Vouching
+Community members can stake tokens to vouch for borrowers:
+```solidity
+function addVouch(
+    address borrowerToVouchFor,
+    uint256 amountToStake,
+    address tokenAddress
+) external
+```
 
-Visit our [docs](https://docs.scaffoldeth.io) to learn how to start building with Scaffold-ETH 2.
+### 5. Reputation System
+- **On-time repayments**: +10 points
+- **Late repayments**: +3 points  
+- **Loan defaults**: -50 points
+- **Vouching for defaulters**: -20 points
 
-To know more about its features, check out our [website](https://scaffoldeth.io).
+## 🧪 Testing
 
-## Contributing to Scaffold-ETH 2
+The platform includes comprehensive testing:
 
-We welcome contributions to Scaffold-ETH 2!
+### Smart Contract Tests
+```bash
+cd packages/foundry
+forge test -vvv
+```
 
-Please see [CONTRIBUTING.MD](https://github.com/scaffold-eth/scaffold-eth-2/blob/main/CONTRIBUTING.md) for more information and guidelines for contributing to Scaffold-ETH 2.
+### Integration Tests
+```bash
+cd packages/nextjs
+yarn test
+```
+
+### Manual Testing Script
+A complete workflow demo script is available:
+```bash
+node scripts/fullWorkflowDemo.js
+```
+
+## 🌐 Deployment
+
+### Frontend Deployment (Vercel)
+```bash
+# Build the frontend
+cd packages/nextjs
+yarn build
+
+# Deploy to Vercel
+vercel --prod
+```
+
+### Contract Deployment
+Contracts are deployed on Flow EVM Testnet. See addresses above.
+
+## 🔐 Security Considerations
+
+- All contracts inherit from OpenZeppelin's battle-tested libraries
+- ReentrancyGuard prevents reentrancy attacks
+- SafeERC20 for secure token transfers
+- Comprehensive input validation
+- Role-based access control
+
+## 🗺 Roadmap
+
+### Phase 1 (Current) ✅
+- Core P2P lending functionality
+- Social vouching system
+- Basic reputation scoring
+- Flow EVM deployment
+
+### Phase 2 (Planned)
+- World ID integration for Sybil resistance
+- Cross-chain reputation with LayerZero
+- Advanced loan modification features
+- Mobile app development
+
+### Phase 3 (Future)
+- Credit scoring AI integration
+- Insurance mechanisms
+- Governance token and DAO
+- Institutional lender onboarding
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+
+### Development Setup
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests
+5. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Built for Flow blockchain hackathons
+- Inspired by traditional credit systems and DeFi innovations
+- Thanks to the Flow, OpenZeppelin, and scaffold-eth communities
+
+## 📞 Contact
+
+- **GitHub**: [@GabinFay](https://github.com/GabinFay)
+- **Project**: [Uncle Credit P2P Lending](https://github.com/GabinFay/uncle-credit-p2p-lending)
+
+---
+
+**Made with ❤️ on Flow EVM**
