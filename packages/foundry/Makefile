@@ -57,5 +57,5 @@ test:
 
 # Verify contracts
 verify:
-	forge script script/VerifyAll.s.sol --ffi --rpc-url $(RPC_URL)
+#	forge script script/VerifyAll.s.sol --ffi --rpc-url $(RPC_URL)
 

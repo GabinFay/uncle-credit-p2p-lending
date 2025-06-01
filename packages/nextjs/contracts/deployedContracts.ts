@@ -4,6 +4,5383 @@
  */
 import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 
-const deployedContracts = {} as const;
+const deployedContracts = {
+  545: {
+    UserRegistry: {
+      address: "0xc11e1d5b17729c277eb37e8b082e6d7b0b8e5701",
+      abi: [
+        {
+          type: "constructor",
+          inputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "getRegisteredUser",
+          inputs: [
+            {
+              name: "_index",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getTotalUsers",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getUserProfile",
+          inputs: [
+            {
+              name: "_userAddress",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "isRegistered",
+              type: "bool",
+              internalType: "bool",
+            },
+            {
+              name: "name",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "registrationTime",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "isUserRegistered",
+          inputs: [
+            {
+              name: "_userAddress",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "registerUser",
+          inputs: [
+            {
+              name: "_name",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "registeredUsers",
+          inputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "totalUsers",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "updateProfile",
+          inputs: [
+            {
+              name: "_newName",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "userProfiles",
+          inputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "isRegistered",
+              type: "bool",
+              internalType: "bool",
+            },
+            {
+              name: "name",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "registrationTime",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "event",
+          name: "UserProfileUpdated",
+          inputs: [
+            {
+              name: "userAddress",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "newName",
+              type: "string",
+              indexed: false,
+              internalType: "string",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "UserRegistered",
+          inputs: [
+            {
+              name: "userAddress",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "name",
+              type: "string",
+              indexed: false,
+              internalType: "string",
+            },
+            {
+              name: "timestamp",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+      ],
+      inheritedFunctions: {},
+      deploymentFile: "run-1748757239.json",
+      deploymentScript: "Deploy.s.sol",
+    },
+    Reputation: {
+      address: "0xe6bfcd7e3fd03ccd7eb1c8b2554ec8e68a4b0add",
+      abi: [
+        {
+          type: "constructor",
+          inputs: [
+            {
+              name: "_userRegistryAddress",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "REPUTATION_POINTS_DEFAULTED",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "REPUTATION_POINTS_LENDER_APPROVED_EXTENSION",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "REPUTATION_POINTS_LENDER_APPROVED_PARTIAL_AGREEMENT",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "REPUTATION_POINTS_LENDER_REJECTED_MODIFICATION",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "REPUTATION_POINTS_LENT_SUCCESSFULLY_AFTER_MODIFICATION",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "REPUTATION_POINTS_LENT_SUCCESSFULLY_ON_TIME_ORIGINAL",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "REPUTATION_POINTS_REPAID_LATE_AFTER_EXTENSION",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "REPUTATION_POINTS_REPAID_LATE_GRACE",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "REPUTATION_POINTS_REPAID_ON_TIME_AFTER_EXTENSION",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "REPUTATION_POINTS_REPAID_ON_TIME_ORIGINAL",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "REPUTATION_POINTS_REPAID_WITH_PARTIAL_AGREEMENT_MET",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "REPUTATION_POINTS_VOUCH_DEFAULTED_VOUCHER",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "activeVouches",
+          inputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "voucher",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "borrower",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "tokenAddress",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "stakedAmount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "isActive",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "addVouch",
+          inputs: [
+            {
+              name: "borrowerToVouchFor",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "amountToStake",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "tokenAddress",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "getActiveVouchesForBorrower",
+          inputs: [
+            {
+              name: "borrower",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "activeReceivedVouches",
+              type: "tuple[]",
+              internalType: "struct Reputation.Vouch[]",
+              components: [
+                {
+                  name: "voucher",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "borrower",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "tokenAddress",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "stakedAmount",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "isActive",
+                  type: "bool",
+                  internalType: "bool",
+                },
+              ],
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getReputationProfile",
+          inputs: [
+            {
+              name: "_user",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "tuple",
+              internalType: "struct Reputation.ReputationProfile",
+              components: [
+                {
+                  name: "userAddress",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "loansTaken",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "loansGiven",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "loansRepaidOnTime",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "loansRepaidLateGrace",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "loansDefaulted",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "totalValueBorrowed",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "totalValueLent",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "currentReputationScore",
+                  type: "int256",
+                  internalType: "int256",
+                },
+                {
+                  name: "vouchingStakeAmount",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "timesVouchedForOthers",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "timesDefaultedAsVoucher",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "modificationsApprovedByLender",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "modificationsRejectedByLender",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+              ],
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getUserVouchesGiven",
+          inputs: [
+            {
+              name: "voucher",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "tuple[]",
+              internalType: "struct Reputation.Vouch[]",
+              components: [
+                {
+                  name: "voucher",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "borrower",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "tokenAddress",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "stakedAmount",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "isActive",
+                  type: "bool",
+                  internalType: "bool",
+                },
+              ],
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getUserVouchesReceived",
+          inputs: [
+            {
+              name: "borrower",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "tuple[]",
+              internalType: "struct Reputation.Vouch[]",
+              components: [
+                {
+                  name: "voucher",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "borrower",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "tokenAddress",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "stakedAmount",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "isActive",
+                  type: "bool",
+                  internalType: "bool",
+                },
+              ],
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getVouchDetails",
+          inputs: [
+            {
+              name: "voucher",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "borrower",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "tuple",
+              internalType: "struct Reputation.Vouch",
+              components: [
+                {
+                  name: "voucher",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "borrower",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "tokenAddress",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "stakedAmount",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "isActive",
+                  type: "bool",
+                  internalType: "bool",
+                },
+              ],
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "owner",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "p2pLendingContractAddress",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "recordLoanPaymentOutcome",
+          inputs: [
+            {
+              name: "agreementId",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+            {
+              name: "borrower",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "lender",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "principalAmount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "outcome",
+              type: "uint8",
+              internalType: "enum Reputation.PaymentOutcomeType",
+            },
+            {
+              name: "modificationTypeUsed",
+              type: "uint8",
+              internalType: "enum P2PLending.PaymentModificationType",
+            },
+            {
+              name: "lenderApprovedRequest",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "removeVouch",
+          inputs: [
+            {
+              name: "borrowerVouchedFor",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "renounceOwnership",
+          inputs: [],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "setP2PLendingContractAddress",
+          inputs: [
+            {
+              name: "_p2pLendingAddress",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "slashVouchAndReputation",
+          inputs: [
+            {
+              name: "voucher",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "defaultingBorrower",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "amountToSlash",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "lenderToCompensate",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "transferOwnership",
+          inputs: [
+            {
+              name: "newOwner",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "updateReputationOnLoanDefault",
+          inputs: [
+            {
+              name: "borrower",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "",
+              type: "bytes32[]",
+              internalType: "bytes32[]",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "userRegistry",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "contract UserRegistry",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "userReputations",
+          inputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "userAddress",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "loansTaken",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "loansGiven",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "loansRepaidOnTime",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "loansRepaidLateGrace",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "loansDefaulted",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "totalValueBorrowed",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "totalValueLent",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "currentReputationScore",
+              type: "int256",
+              internalType: "int256",
+            },
+            {
+              name: "vouchingStakeAmount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "timesVouchedForOthers",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "timesDefaultedAsVoucher",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "modificationsApprovedByLender",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "modificationsRejectedByLender",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "userVouchesGiven",
+          inputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "voucher",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "borrower",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "tokenAddress",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "stakedAmount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "isActive",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "userVouchesReceived",
+          inputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "voucher",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "borrower",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "tokenAddress",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "stakedAmount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "isActive",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "event",
+          name: "LoanTermOutcomeRecorded",
+          inputs: [
+            {
+              name: "agreementId",
+              type: "bytes32",
+              indexed: true,
+              internalType: "bytes32",
+            },
+            {
+              name: "user",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "reputationChange",
+              type: "int256",
+              indexed: false,
+              internalType: "int256",
+            },
+            {
+              name: "reason",
+              type: "string",
+              indexed: false,
+              internalType: "string",
+            },
+            {
+              name: "outcomeType",
+              type: "uint8",
+              indexed: false,
+              internalType: "enum Reputation.PaymentOutcomeType",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "OwnershipTransferred",
+          inputs: [
+            {
+              name: "previousOwner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "newOwner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "ReputationUpdated",
+          inputs: [
+            {
+              name: "user",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "newScore",
+              type: "int256",
+              indexed: false,
+              internalType: "int256",
+            },
+            {
+              name: "reason",
+              type: "string",
+              indexed: false,
+              internalType: "string",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "VouchAdded",
+          inputs: [
+            {
+              name: "voucher",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "borrower",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "token",
+              type: "address",
+              indexed: false,
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "VouchRemoved",
+          inputs: [
+            {
+              name: "voucher",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "borrower",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "returnedAmount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "VouchSlashed",
+          inputs: [
+            {
+              name: "voucher",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "defaultingBorrower",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "slashedAmount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "slashedToLender",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "error",
+          name: "OwnableInvalidOwner",
+          inputs: [
+            {
+              name: "owner",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "OwnableUnauthorizedAccount",
+          inputs: [
+            {
+              name: "account",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "ReentrancyGuardReentrantCall",
+          inputs: [],
+        },
+      ],
+      inheritedFunctions: {},
+      deploymentFile: "run-1748757239.json",
+      deploymentScript: "Deploy.s.sol",
+    },
+    P2PLending: {
+      address: "0xf21db950a98f4076c2332e67863424e0b30bc48f",
+      abi: [
+        {
+          type: "constructor",
+          inputs: [
+            {
+              name: "_userRegistryAddress",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "_reputationContractAddress",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "_platformWallet",
+              type: "address",
+              internalType: "address payable",
+            },
+            {
+              name: "_reputationOAppAddress",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "BASIS_POINTS",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "acceptLoanOffer",
+          inputs: [
+            {
+              name: "offerId_",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+            {
+              name: "borrowerCollateralAmount_",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "borrowerCollateralToken_",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "agreementId",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "createLoanOffer",
+          inputs: [
+            {
+              name: "amount_",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "token_",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "interestRateBPS_",
+              type: "uint16",
+              internalType: "uint16",
+            },
+            {
+              name: "durationSeconds_",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "requiredCollateralAmount_",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "collateralToken_",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "offerId",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "createLoanRequest",
+          inputs: [
+            {
+              name: "amount_",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "token_",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "proposedInterestRateBPS_",
+              type: "uint16",
+              internalType: "uint16",
+            },
+            {
+              name: "proposedDurationSeconds_",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "offeredCollateralAmount_",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "offeredCollateralToken_",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "requestId",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "fundLoanRequest",
+          inputs: [
+            {
+              name: "requestId_",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          outputs: [
+            {
+              name: "agreementId",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "getLoanAgreementDetails",
+          inputs: [
+            {
+              name: "agreementId",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "tuple",
+              internalType: "struct P2PLending.LoanAgreement",
+              components: [
+                {
+                  name: "id",
+                  type: "bytes32",
+                  internalType: "bytes32",
+                },
+                {
+                  name: "originalOfferId",
+                  type: "bytes32",
+                  internalType: "bytes32",
+                },
+                {
+                  name: "originalRequestId",
+                  type: "bytes32",
+                  internalType: "bytes32",
+                },
+                {
+                  name: "lender",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "borrower",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "principalAmount",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "loanToken",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "interestRateBPS",
+                  type: "uint16",
+                  internalType: "uint16",
+                },
+                {
+                  name: "durationSeconds",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "collateralAmount",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "collateralToken",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "startTime",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "dueDate",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "amountPaid",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "status",
+                  type: "uint8",
+                  internalType: "enum P2PLending.LoanStatus",
+                },
+                {
+                  name: "requestedModificationType",
+                  type: "uint8",
+                  internalType: "enum P2PLending.PaymentModificationType",
+                },
+                {
+                  name: "requestedModificationValue",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "modificationApprovedByLender",
+                  type: "bool",
+                  internalType: "bool",
+                },
+              ],
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getLoanOfferDetails",
+          inputs: [
+            {
+              name: "offerId",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "tuple",
+              internalType: "struct P2PLending.LoanOffer",
+              components: [
+                {
+                  name: "id",
+                  type: "bytes32",
+                  internalType: "bytes32",
+                },
+                {
+                  name: "lender",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "amount",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "token",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "interestRateBPS",
+                  type: "uint16",
+                  internalType: "uint16",
+                },
+                {
+                  name: "durationSeconds",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "requiredCollateralAmount",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "collateralToken",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "isActive",
+                  type: "bool",
+                  internalType: "bool",
+                },
+                {
+                  name: "isFulfilled",
+                  type: "bool",
+                  internalType: "bool",
+                },
+              ],
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getLoanRequestDetails",
+          inputs: [
+            {
+              name: "requestId",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "tuple",
+              internalType: "struct P2PLending.LoanRequest",
+              components: [
+                {
+                  name: "id",
+                  type: "bytes32",
+                  internalType: "bytes32",
+                },
+                {
+                  name: "borrower",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "amount",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "token",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "proposedInterestRateBPS",
+                  type: "uint16",
+                  internalType: "uint16",
+                },
+                {
+                  name: "proposedDurationSeconds",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "offeredCollateralAmount",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "collateralToken",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "isActive",
+                  type: "bool",
+                  internalType: "bool",
+                },
+                {
+                  name: "isFulfilled",
+                  type: "bool",
+                  internalType: "bool",
+                },
+              ],
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getUserLoanAgreementIdsAsBorrower",
+          inputs: [
+            {
+              name: "user",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bytes32[]",
+              internalType: "bytes32[]",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getUserLoanAgreementIdsAsLender",
+          inputs: [
+            {
+              name: "user",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bytes32[]",
+              internalType: "bytes32[]",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getUserLoanOfferIds",
+          inputs: [
+            {
+              name: "user",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bytes32[]",
+              internalType: "bytes32[]",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getUserLoanRequestIds",
+          inputs: [
+            {
+              name: "user",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bytes32[]",
+              internalType: "bytes32[]",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "handleP2PDefault",
+          inputs: [
+            {
+              name: "agreementId",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "loanAgreements",
+          inputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          outputs: [
+            {
+              name: "id",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+            {
+              name: "originalOfferId",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+            {
+              name: "originalRequestId",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+            {
+              name: "lender",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "borrower",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "principalAmount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "loanToken",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "interestRateBPS",
+              type: "uint16",
+              internalType: "uint16",
+            },
+            {
+              name: "durationSeconds",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "collateralAmount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "collateralToken",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "startTime",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "dueDate",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "amountPaid",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "status",
+              type: "uint8",
+              internalType: "enum P2PLending.LoanStatus",
+            },
+            {
+              name: "requestedModificationType",
+              type: "uint8",
+              internalType: "enum P2PLending.PaymentModificationType",
+            },
+            {
+              name: "requestedModificationValue",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "modificationApprovedByLender",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "loanOffers",
+          inputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          outputs: [
+            {
+              name: "id",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+            {
+              name: "lender",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "token",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "interestRateBPS",
+              type: "uint16",
+              internalType: "uint16",
+            },
+            {
+              name: "durationSeconds",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "requiredCollateralAmount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "collateralToken",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "isActive",
+              type: "bool",
+              internalType: "bool",
+            },
+            {
+              name: "isFulfilled",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "loanRequests",
+          inputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          outputs: [
+            {
+              name: "id",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+            {
+              name: "borrower",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "token",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "proposedInterestRateBPS",
+              type: "uint16",
+              internalType: "uint16",
+            },
+            {
+              name: "proposedDurationSeconds",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "offeredCollateralAmount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "collateralToken",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "isActive",
+              type: "bool",
+              internalType: "bool",
+            },
+            {
+              name: "isFulfilled",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "owner",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "platformWallet",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address payable",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "renounceOwnership",
+          inputs: [],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "repayLoan",
+          inputs: [
+            {
+              name: "agreementId",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+            {
+              name: "paymentAmount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "reputationContract",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "contract Reputation",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "reputationOApp",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "contract IReputationOApp",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "requestPaymentModification",
+          inputs: [
+            {
+              name: "_agreementId",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+            {
+              name: "_modificationType",
+              type: "uint8",
+              internalType: "enum P2PLending.PaymentModificationType",
+            },
+            {
+              name: "_value",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "respondToPaymentModification",
+          inputs: [
+            {
+              name: "_agreementId",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+            {
+              name: "_approved",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "setPythAddress",
+          inputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "setReputationContractAddress",
+          inputs: [
+            {
+              name: "_newReputationContractAddress",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "setReputationOAppAddress",
+          inputs: [
+            {
+              name: "newReputationOAppAddress",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "transferOwnership",
+          inputs: [
+            {
+              name: "newOwner",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "userLoanAgreementIdsAsBorrower",
+          inputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "userLoanAgreementIdsAsLender",
+          inputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "userLoanOfferIds",
+          inputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "userLoanRequestIds",
+          inputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "userRegistry",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "contract UserRegistry",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "event",
+          name: "LoanAgreementCreated",
+          inputs: [
+            {
+              name: "agreementId",
+              type: "bytes32",
+              indexed: true,
+              internalType: "bytes32",
+            },
+            {
+              name: "lender",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "borrower",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "principalAmount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "token",
+              type: "address",
+              indexed: false,
+              internalType: "address",
+            },
+            {
+              name: "interestRateBPS",
+              type: "uint16",
+              indexed: false,
+              internalType: "uint16",
+            },
+            {
+              name: "durationSeconds",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "startTime",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "dueDate",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "collateralAmount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "collateralToken",
+              type: "address",
+              indexed: false,
+              internalType: "address",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "LoanAgreementDefaulted",
+          inputs: [
+            {
+              name: "agreementId",
+              type: "bytes32",
+              indexed: true,
+              internalType: "bytes32",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "LoanAgreementRepaid",
+          inputs: [
+            {
+              name: "agreementId",
+              type: "bytes32",
+              indexed: true,
+              internalType: "bytes32",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "LoanOfferCreated",
+          inputs: [
+            {
+              name: "offerId",
+              type: "bytes32",
+              indexed: true,
+              internalType: "bytes32",
+            },
+            {
+              name: "lender",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "token",
+              type: "address",
+              indexed: false,
+              internalType: "address",
+            },
+            {
+              name: "interestRateBPS",
+              type: "uint16",
+              indexed: false,
+              internalType: "uint16",
+            },
+            {
+              name: "durationSeconds",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "LoanRepayment",
+          inputs: [
+            {
+              name: "agreementId",
+              type: "bytes32",
+              indexed: true,
+              internalType: "bytes32",
+            },
+            {
+              name: "payer",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "amountPaidThisTime",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "newTotalAmountPaid",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "newRemainingBalance",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "newStatus",
+              type: "uint8",
+              indexed: false,
+              internalType: "enum P2PLending.LoanStatus",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "LoanRequestCreated",
+          inputs: [
+            {
+              name: "requestId",
+              type: "bytes32",
+              indexed: true,
+              internalType: "bytes32",
+            },
+            {
+              name: "borrower",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "token",
+              type: "address",
+              indexed: false,
+              internalType: "address",
+            },
+            {
+              name: "proposedInterestRateBPS",
+              type: "uint16",
+              indexed: false,
+              internalType: "uint16",
+            },
+            {
+              name: "proposedDurationSeconds",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "OwnershipTransferred",
+          inputs: [
+            {
+              name: "previousOwner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "newOwner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "PaymentModificationRequested",
+          inputs: [
+            {
+              name: "agreementId",
+              type: "bytes32",
+              indexed: true,
+              internalType: "bytes32",
+            },
+            {
+              name: "borrower",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "modificationType",
+              type: "uint8",
+              indexed: false,
+              internalType: "enum P2PLending.PaymentModificationType",
+            },
+            {
+              name: "value",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "PaymentModificationResponded",
+          inputs: [
+            {
+              name: "agreementId",
+              type: "bytes32",
+              indexed: true,
+              internalType: "bytes32",
+            },
+            {
+              name: "lender",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "approved",
+              type: "bool",
+              indexed: false,
+              internalType: "bool",
+            },
+            {
+              name: "modificationType",
+              type: "uint8",
+              indexed: false,
+              internalType: "enum P2PLending.PaymentModificationType",
+            },
+            {
+              name: "originalRequestedValue",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "error",
+          name: "OwnableInvalidOwner",
+          inputs: [
+            {
+              name: "owner",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "OwnableUnauthorizedAccount",
+          inputs: [
+            {
+              name: "account",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "ReentrancyGuardReentrantCall",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "SafeERC20FailedOperation",
+          inputs: [
+            {
+              name: "token",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+      ],
+      inheritedFunctions: {},
+      deploymentFile: "run-1748757239.json",
+      deploymentScript: "Deploy.s.sol",
+    },
+  },
+  31337: {
+    UserRegistry: {
+      address: "0x700b6a60ce7eaaea56f065753d8dcb9653dbad35",
+      abi: [
+        {
+          type: "constructor",
+          inputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "getRegisteredUser",
+          inputs: [
+            {
+              name: "_index",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getTotalUsers",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getUserProfile",
+          inputs: [
+            {
+              name: "_userAddress",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "isRegistered",
+              type: "bool",
+              internalType: "bool",
+            },
+            {
+              name: "name",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "registrationTime",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "isUserRegistered",
+          inputs: [
+            {
+              name: "_userAddress",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "registerUser",
+          inputs: [
+            {
+              name: "_name",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "registeredUsers",
+          inputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "totalUsers",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "updateProfile",
+          inputs: [
+            {
+              name: "_newName",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "userProfiles",
+          inputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "isRegistered",
+              type: "bool",
+              internalType: "bool",
+            },
+            {
+              name: "name",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "registrationTime",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "event",
+          name: "UserProfileUpdated",
+          inputs: [
+            {
+              name: "userAddress",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "newName",
+              type: "string",
+              indexed: false,
+              internalType: "string",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "UserRegistered",
+          inputs: [
+            {
+              name: "userAddress",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "name",
+              type: "string",
+              indexed: false,
+              internalType: "string",
+            },
+            {
+              name: "timestamp",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+      ],
+      inheritedFunctions: {},
+      deploymentFile: "run-1748754803.json",
+      deploymentScript: "Deploy.s.sol",
+    },
+    Reputation: {
+      address: "0xa15bb66138824a1c7167f5e85b957d04dd34e468",
+      abi: [
+        {
+          type: "constructor",
+          inputs: [
+            {
+              name: "_userRegistryAddress",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "REPUTATION_POINTS_DEFAULTED",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "REPUTATION_POINTS_LENDER_APPROVED_EXTENSION",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "REPUTATION_POINTS_LENDER_APPROVED_PARTIAL_AGREEMENT",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "REPUTATION_POINTS_LENDER_REJECTED_MODIFICATION",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "REPUTATION_POINTS_LENT_SUCCESSFULLY_AFTER_MODIFICATION",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "REPUTATION_POINTS_LENT_SUCCESSFULLY_ON_TIME_ORIGINAL",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "REPUTATION_POINTS_REPAID_LATE_AFTER_EXTENSION",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "REPUTATION_POINTS_REPAID_LATE_GRACE",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "REPUTATION_POINTS_REPAID_ON_TIME_AFTER_EXTENSION",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "REPUTATION_POINTS_REPAID_ON_TIME_ORIGINAL",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "REPUTATION_POINTS_REPAID_WITH_PARTIAL_AGREEMENT_MET",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "REPUTATION_POINTS_VOUCH_DEFAULTED_VOUCHER",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "activeVouches",
+          inputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "voucher",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "borrower",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "tokenAddress",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "stakedAmount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "isActive",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "addVouch",
+          inputs: [
+            {
+              name: "borrowerToVouchFor",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "amountToStake",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "tokenAddress",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "getActiveVouchesForBorrower",
+          inputs: [
+            {
+              name: "borrower",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "activeReceivedVouches",
+              type: "tuple[]",
+              internalType: "struct Reputation.Vouch[]",
+              components: [
+                {
+                  name: "voucher",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "borrower",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "tokenAddress",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "stakedAmount",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "isActive",
+                  type: "bool",
+                  internalType: "bool",
+                },
+              ],
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getReputationProfile",
+          inputs: [
+            {
+              name: "_user",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "tuple",
+              internalType: "struct Reputation.ReputationProfile",
+              components: [
+                {
+                  name: "userAddress",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "loansTaken",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "loansGiven",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "loansRepaidOnTime",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "loansRepaidLateGrace",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "loansDefaulted",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "totalValueBorrowed",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "totalValueLent",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "currentReputationScore",
+                  type: "int256",
+                  internalType: "int256",
+                },
+                {
+                  name: "vouchingStakeAmount",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "timesVouchedForOthers",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "timesDefaultedAsVoucher",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "modificationsApprovedByLender",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "modificationsRejectedByLender",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+              ],
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getUserVouchesGiven",
+          inputs: [
+            {
+              name: "voucher",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "tuple[]",
+              internalType: "struct Reputation.Vouch[]",
+              components: [
+                {
+                  name: "voucher",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "borrower",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "tokenAddress",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "stakedAmount",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "isActive",
+                  type: "bool",
+                  internalType: "bool",
+                },
+              ],
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getUserVouchesReceived",
+          inputs: [
+            {
+              name: "borrower",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "tuple[]",
+              internalType: "struct Reputation.Vouch[]",
+              components: [
+                {
+                  name: "voucher",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "borrower",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "tokenAddress",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "stakedAmount",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "isActive",
+                  type: "bool",
+                  internalType: "bool",
+                },
+              ],
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getVouchDetails",
+          inputs: [
+            {
+              name: "voucher",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "borrower",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "tuple",
+              internalType: "struct Reputation.Vouch",
+              components: [
+                {
+                  name: "voucher",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "borrower",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "tokenAddress",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "stakedAmount",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "isActive",
+                  type: "bool",
+                  internalType: "bool",
+                },
+              ],
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "owner",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "p2pLendingContractAddress",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "recordLoanPaymentOutcome",
+          inputs: [
+            {
+              name: "agreementId",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+            {
+              name: "borrower",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "lender",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "principalAmount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "outcome",
+              type: "uint8",
+              internalType: "enum Reputation.PaymentOutcomeType",
+            },
+            {
+              name: "modificationTypeUsed",
+              type: "uint8",
+              internalType: "enum P2PLending.PaymentModificationType",
+            },
+            {
+              name: "lenderApprovedRequest",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "removeVouch",
+          inputs: [
+            {
+              name: "borrowerVouchedFor",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "renounceOwnership",
+          inputs: [],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "setP2PLendingContractAddress",
+          inputs: [
+            {
+              name: "_p2pLendingAddress",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "slashVouchAndReputation",
+          inputs: [
+            {
+              name: "voucher",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "defaultingBorrower",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "amountToSlash",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "lenderToCompensate",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "transferOwnership",
+          inputs: [
+            {
+              name: "newOwner",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "updateReputationOnLoanDefault",
+          inputs: [
+            {
+              name: "borrower",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "",
+              type: "bytes32[]",
+              internalType: "bytes32[]",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "userRegistry",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "contract UserRegistry",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "userReputations",
+          inputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "userAddress",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "loansTaken",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "loansGiven",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "loansRepaidOnTime",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "loansRepaidLateGrace",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "loansDefaulted",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "totalValueBorrowed",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "totalValueLent",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "currentReputationScore",
+              type: "int256",
+              internalType: "int256",
+            },
+            {
+              name: "vouchingStakeAmount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "timesVouchedForOthers",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "timesDefaultedAsVoucher",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "modificationsApprovedByLender",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "modificationsRejectedByLender",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "userVouchesGiven",
+          inputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "voucher",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "borrower",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "tokenAddress",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "stakedAmount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "isActive",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "userVouchesReceived",
+          inputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "voucher",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "borrower",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "tokenAddress",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "stakedAmount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "isActive",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "event",
+          name: "LoanTermOutcomeRecorded",
+          inputs: [
+            {
+              name: "agreementId",
+              type: "bytes32",
+              indexed: true,
+              internalType: "bytes32",
+            },
+            {
+              name: "user",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "reputationChange",
+              type: "int256",
+              indexed: false,
+              internalType: "int256",
+            },
+            {
+              name: "reason",
+              type: "string",
+              indexed: false,
+              internalType: "string",
+            },
+            {
+              name: "outcomeType",
+              type: "uint8",
+              indexed: false,
+              internalType: "enum Reputation.PaymentOutcomeType",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "OwnershipTransferred",
+          inputs: [
+            {
+              name: "previousOwner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "newOwner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "ReputationUpdated",
+          inputs: [
+            {
+              name: "user",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "newScore",
+              type: "int256",
+              indexed: false,
+              internalType: "int256",
+            },
+            {
+              name: "reason",
+              type: "string",
+              indexed: false,
+              internalType: "string",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "VouchAdded",
+          inputs: [
+            {
+              name: "voucher",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "borrower",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "token",
+              type: "address",
+              indexed: false,
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "VouchRemoved",
+          inputs: [
+            {
+              name: "voucher",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "borrower",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "returnedAmount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "VouchSlashed",
+          inputs: [
+            {
+              name: "voucher",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "defaultingBorrower",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "slashedAmount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "slashedToLender",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "error",
+          name: "OwnableInvalidOwner",
+          inputs: [
+            {
+              name: "owner",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "OwnableUnauthorizedAccount",
+          inputs: [
+            {
+              name: "account",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "ReentrancyGuardReentrantCall",
+          inputs: [],
+        },
+      ],
+      inheritedFunctions: {},
+      deploymentFile: "run-1748754803.json",
+      deploymentScript: "Deploy.s.sol",
+    },
+    P2PLending: {
+      address: "0xb19b36b1456e65e3a6d514d3f715f204bd59f431",
+      abi: [
+        {
+          type: "constructor",
+          inputs: [
+            {
+              name: "_userRegistryAddress",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "_reputationContractAddress",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "_platformWallet",
+              type: "address",
+              internalType: "address payable",
+            },
+            {
+              name: "_reputationOAppAddress",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "BASIS_POINTS",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "acceptLoanOffer",
+          inputs: [
+            {
+              name: "offerId_",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+            {
+              name: "borrowerCollateralAmount_",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "borrowerCollateralToken_",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "agreementId",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "createLoanOffer",
+          inputs: [
+            {
+              name: "amount_",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "token_",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "interestRateBPS_",
+              type: "uint16",
+              internalType: "uint16",
+            },
+            {
+              name: "durationSeconds_",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "requiredCollateralAmount_",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "collateralToken_",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "offerId",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "createLoanRequest",
+          inputs: [
+            {
+              name: "amount_",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "token_",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "proposedInterestRateBPS_",
+              type: "uint16",
+              internalType: "uint16",
+            },
+            {
+              name: "proposedDurationSeconds_",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "offeredCollateralAmount_",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "offeredCollateralToken_",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "requestId",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "fundLoanRequest",
+          inputs: [
+            {
+              name: "requestId_",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          outputs: [
+            {
+              name: "agreementId",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "getLoanAgreementDetails",
+          inputs: [
+            {
+              name: "agreementId",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "tuple",
+              internalType: "struct P2PLending.LoanAgreement",
+              components: [
+                {
+                  name: "id",
+                  type: "bytes32",
+                  internalType: "bytes32",
+                },
+                {
+                  name: "originalOfferId",
+                  type: "bytes32",
+                  internalType: "bytes32",
+                },
+                {
+                  name: "originalRequestId",
+                  type: "bytes32",
+                  internalType: "bytes32",
+                },
+                {
+                  name: "lender",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "borrower",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "principalAmount",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "loanToken",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "interestRateBPS",
+                  type: "uint16",
+                  internalType: "uint16",
+                },
+                {
+                  name: "durationSeconds",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "collateralAmount",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "collateralToken",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "startTime",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "dueDate",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "amountPaid",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "status",
+                  type: "uint8",
+                  internalType: "enum P2PLending.LoanStatus",
+                },
+                {
+                  name: "requestedModificationType",
+                  type: "uint8",
+                  internalType: "enum P2PLending.PaymentModificationType",
+                },
+                {
+                  name: "requestedModificationValue",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "modificationApprovedByLender",
+                  type: "bool",
+                  internalType: "bool",
+                },
+              ],
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getLoanOfferDetails",
+          inputs: [
+            {
+              name: "offerId",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "tuple",
+              internalType: "struct P2PLending.LoanOffer",
+              components: [
+                {
+                  name: "id",
+                  type: "bytes32",
+                  internalType: "bytes32",
+                },
+                {
+                  name: "lender",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "amount",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "token",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "interestRateBPS",
+                  type: "uint16",
+                  internalType: "uint16",
+                },
+                {
+                  name: "durationSeconds",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "requiredCollateralAmount",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "collateralToken",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "isActive",
+                  type: "bool",
+                  internalType: "bool",
+                },
+                {
+                  name: "isFulfilled",
+                  type: "bool",
+                  internalType: "bool",
+                },
+              ],
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getLoanRequestDetails",
+          inputs: [
+            {
+              name: "requestId",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "tuple",
+              internalType: "struct P2PLending.LoanRequest",
+              components: [
+                {
+                  name: "id",
+                  type: "bytes32",
+                  internalType: "bytes32",
+                },
+                {
+                  name: "borrower",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "amount",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "token",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "proposedInterestRateBPS",
+                  type: "uint16",
+                  internalType: "uint16",
+                },
+                {
+                  name: "proposedDurationSeconds",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "offeredCollateralAmount",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "collateralToken",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "isActive",
+                  type: "bool",
+                  internalType: "bool",
+                },
+                {
+                  name: "isFulfilled",
+                  type: "bool",
+                  internalType: "bool",
+                },
+              ],
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getUserLoanAgreementIdsAsBorrower",
+          inputs: [
+            {
+              name: "user",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bytes32[]",
+              internalType: "bytes32[]",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getUserLoanAgreementIdsAsLender",
+          inputs: [
+            {
+              name: "user",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bytes32[]",
+              internalType: "bytes32[]",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getUserLoanOfferIds",
+          inputs: [
+            {
+              name: "user",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bytes32[]",
+              internalType: "bytes32[]",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getUserLoanRequestIds",
+          inputs: [
+            {
+              name: "user",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bytes32[]",
+              internalType: "bytes32[]",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "handleP2PDefault",
+          inputs: [
+            {
+              name: "agreementId",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "loanAgreements",
+          inputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          outputs: [
+            {
+              name: "id",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+            {
+              name: "originalOfferId",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+            {
+              name: "originalRequestId",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+            {
+              name: "lender",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "borrower",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "principalAmount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "loanToken",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "interestRateBPS",
+              type: "uint16",
+              internalType: "uint16",
+            },
+            {
+              name: "durationSeconds",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "collateralAmount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "collateralToken",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "startTime",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "dueDate",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "amountPaid",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "status",
+              type: "uint8",
+              internalType: "enum P2PLending.LoanStatus",
+            },
+            {
+              name: "requestedModificationType",
+              type: "uint8",
+              internalType: "enum P2PLending.PaymentModificationType",
+            },
+            {
+              name: "requestedModificationValue",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "modificationApprovedByLender",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "loanOffers",
+          inputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          outputs: [
+            {
+              name: "id",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+            {
+              name: "lender",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "token",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "interestRateBPS",
+              type: "uint16",
+              internalType: "uint16",
+            },
+            {
+              name: "durationSeconds",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "requiredCollateralAmount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "collateralToken",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "isActive",
+              type: "bool",
+              internalType: "bool",
+            },
+            {
+              name: "isFulfilled",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "loanRequests",
+          inputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          outputs: [
+            {
+              name: "id",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+            {
+              name: "borrower",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "token",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "proposedInterestRateBPS",
+              type: "uint16",
+              internalType: "uint16",
+            },
+            {
+              name: "proposedDurationSeconds",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "offeredCollateralAmount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "collateralToken",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "isActive",
+              type: "bool",
+              internalType: "bool",
+            },
+            {
+              name: "isFulfilled",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "owner",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "platformWallet",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address payable",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "renounceOwnership",
+          inputs: [],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "repayLoan",
+          inputs: [
+            {
+              name: "agreementId",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+            {
+              name: "paymentAmount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "reputationContract",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "contract Reputation",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "reputationOApp",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "contract IReputationOApp",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "requestPaymentModification",
+          inputs: [
+            {
+              name: "_agreementId",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+            {
+              name: "_modificationType",
+              type: "uint8",
+              internalType: "enum P2PLending.PaymentModificationType",
+            },
+            {
+              name: "_value",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "respondToPaymentModification",
+          inputs: [
+            {
+              name: "_agreementId",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+            {
+              name: "_approved",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "setPythAddress",
+          inputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "setReputationContractAddress",
+          inputs: [
+            {
+              name: "_newReputationContractAddress",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "setReputationOAppAddress",
+          inputs: [
+            {
+              name: "newReputationOAppAddress",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "transferOwnership",
+          inputs: [
+            {
+              name: "newOwner",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "userLoanAgreementIdsAsBorrower",
+          inputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "userLoanAgreementIdsAsLender",
+          inputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "userLoanOfferIds",
+          inputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "userLoanRequestIds",
+          inputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "userRegistry",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "contract UserRegistry",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "event",
+          name: "LoanAgreementCreated",
+          inputs: [
+            {
+              name: "agreementId",
+              type: "bytes32",
+              indexed: true,
+              internalType: "bytes32",
+            },
+            {
+              name: "lender",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "borrower",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "principalAmount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "token",
+              type: "address",
+              indexed: false,
+              internalType: "address",
+            },
+            {
+              name: "interestRateBPS",
+              type: "uint16",
+              indexed: false,
+              internalType: "uint16",
+            },
+            {
+              name: "durationSeconds",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "startTime",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "dueDate",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "collateralAmount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "collateralToken",
+              type: "address",
+              indexed: false,
+              internalType: "address",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "LoanAgreementDefaulted",
+          inputs: [
+            {
+              name: "agreementId",
+              type: "bytes32",
+              indexed: true,
+              internalType: "bytes32",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "LoanAgreementRepaid",
+          inputs: [
+            {
+              name: "agreementId",
+              type: "bytes32",
+              indexed: true,
+              internalType: "bytes32",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "LoanOfferCreated",
+          inputs: [
+            {
+              name: "offerId",
+              type: "bytes32",
+              indexed: true,
+              internalType: "bytes32",
+            },
+            {
+              name: "lender",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "token",
+              type: "address",
+              indexed: false,
+              internalType: "address",
+            },
+            {
+              name: "interestRateBPS",
+              type: "uint16",
+              indexed: false,
+              internalType: "uint16",
+            },
+            {
+              name: "durationSeconds",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "LoanRepayment",
+          inputs: [
+            {
+              name: "agreementId",
+              type: "bytes32",
+              indexed: true,
+              internalType: "bytes32",
+            },
+            {
+              name: "payer",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "amountPaidThisTime",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "newTotalAmountPaid",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "newRemainingBalance",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "newStatus",
+              type: "uint8",
+              indexed: false,
+              internalType: "enum P2PLending.LoanStatus",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "LoanRequestCreated",
+          inputs: [
+            {
+              name: "requestId",
+              type: "bytes32",
+              indexed: true,
+              internalType: "bytes32",
+            },
+            {
+              name: "borrower",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "token",
+              type: "address",
+              indexed: false,
+              internalType: "address",
+            },
+            {
+              name: "proposedInterestRateBPS",
+              type: "uint16",
+              indexed: false,
+              internalType: "uint16",
+            },
+            {
+              name: "proposedDurationSeconds",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "OwnershipTransferred",
+          inputs: [
+            {
+              name: "previousOwner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "newOwner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "PaymentModificationRequested",
+          inputs: [
+            {
+              name: "agreementId",
+              type: "bytes32",
+              indexed: true,
+              internalType: "bytes32",
+            },
+            {
+              name: "borrower",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "modificationType",
+              type: "uint8",
+              indexed: false,
+              internalType: "enum P2PLending.PaymentModificationType",
+            },
+            {
+              name: "value",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "PaymentModificationResponded",
+          inputs: [
+            {
+              name: "agreementId",
+              type: "bytes32",
+              indexed: true,
+              internalType: "bytes32",
+            },
+            {
+              name: "lender",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "approved",
+              type: "bool",
+              indexed: false,
+              internalType: "bool",
+            },
+            {
+              name: "modificationType",
+              type: "uint8",
+              indexed: false,
+              internalType: "enum P2PLending.PaymentModificationType",
+            },
+            {
+              name: "originalRequestedValue",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "error",
+          name: "OwnableInvalidOwner",
+          inputs: [
+            {
+              name: "owner",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "OwnableUnauthorizedAccount",
+          inputs: [
+            {
+              name: "account",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "ReentrancyGuardReentrantCall",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "SafeERC20FailedOperation",
+          inputs: [
+            {
+              name: "token",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+      ],
+      inheritedFunctions: {},
+      deploymentFile: "run-1748754803.json",
+      deploymentScript: "Deploy.s.sol",
+    },
+  },
+} as const;
 
 export default deployedContracts satisfies GenericContractsDeclaration;

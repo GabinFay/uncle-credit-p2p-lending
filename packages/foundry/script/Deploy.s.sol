@@ -3,6 +3,7 @@ pragma solidity ^0.8.19;
 
 import "./DeployHelpers.s.sol";
 import { DeployYourContract } from "./DeployYourContract.s.sol";
+import { DeployUncleCreditContracts } from "./DeployUncleCreditContracts.s.sol";
 
 /**
  * @notice Main deployment script for all contracts
@@ -12,11 +13,13 @@ import { DeployYourContract } from "./DeployYourContract.s.sol";
  */
 contract DeployScript is ScaffoldETHDeploy {
     function run() external {
-        // Deploys all your contracts sequentially
-        // Add new deployments here when needed
+        // Deploy Uncle Credit contracts
+        DeployUncleCreditContracts deployUncleCreditContracts = new DeployUncleCreditContracts();
+        deployUncleCreditContracts.run();
 
-        DeployYourContract deployYourContract = new DeployYourContract();
-        deployYourContract.run();
+        // Deploy example contract (can be removed later)
+        // DeployYourContract deployYourContract = new DeployYourContract();
+        // deployYourContract.run();
 
         // Deploy another contract
         // DeployMyContract myContract = new DeployMyContract();

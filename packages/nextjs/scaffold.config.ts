@@ -1,3 +1,4 @@
+import { flowTestnet } from "./utils/scaffold-eth/flowTestnet";
 import * as chains from "viem/chains";
 
 export type ScaffoldConfig = {
@@ -13,7 +14,7 @@ export const DEFAULT_ALCHEMY_API_KEY = "oKxs-03sij-U_N0iOlrSsZFr29-IqbuF";
 
 const scaffoldConfig = {
   // The networks on which your DApp is live
-  targetNetworks: [chains.foundry],
+  targetNetworks: [chains.foundry, flowTestnet],
 
   // The interval at which your front-end polls the RPC servers for new data
   // it has no effect if you only target the local network (default is 4000)
@@ -26,10 +27,10 @@ const scaffoldConfig = {
   alchemyApiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY || DEFAULT_ALCHEMY_API_KEY,
 
   // If you want to use a different RPC for a specific network, you can add it here.
-  // The key is the chain ID, and the value is the HTTP RPC URL
+  // The key is the chain ID, and the value is the RPC URL
   rpcOverrides: {
-    // Example:
-    // [chains.mainnet.id]: "https://mainnet.buidlguidl.com",
+    // Flow testnet RPC override if needed
+    [flowTestnet.id]: "https://testnet.evm.nodes.onflow.org",
   },
 
   // This is ours WalletConnect's default project ID.
@@ -38,8 +39,8 @@ const scaffoldConfig = {
   // .env.local for local testing, and in the Vercel/system env config for live apps.
   walletConnectProjectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID || "3a8170812b534d0ff9d794f19a901d64",
 
-  // Only show the Burner Wallet when running on hardhat network
-  onlyLocalBurnerWallet: true,
+  // Allow MetaMask connections for testnet usage
+  onlyLocalBurnerWallet: false,
 } as const satisfies ScaffoldConfig;
 
 export default scaffoldConfig;
