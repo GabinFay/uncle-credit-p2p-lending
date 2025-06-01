@@ -2,15 +2,12 @@
 
 import { useState, useEffect } from "react"
 import { useAccount, useWriteContract, useReadContract, useWaitForTransactionReceipt } from "wagmi"
-import { parseEther, formatEther } from "viem"
+import { parseEther } from "viem"
 import { toast } from "react-hot-toast"
 import LoanApplication from "./loan-application"
 import LoanStatusScreen from "./loan-status-screen"
 import CommunityVouchingScreen from "./community-vouching-screen"
 import LoanSuccessScreen from "./loan-success-screen"
-import VouchingSuccessScreen from "./vouching-success-screen"
-import LoanDashboardScreen from "./loan-dashboard-screen"
-import PaymentSuccessScreen from "./payment-success-screen"
 
 interface Voucher {
   name: string
@@ -67,25 +64,18 @@ interface PendingTransaction {
 const P2P_LENDING_ADDRESS = process.env.NEXT_PUBLIC_P2PLENDING_CONTRACT_ADDRESS as `0x${string}`
 const REPUTATION_ADDRESS = process.env.NEXT_PUBLIC_REPUTATION_CONTRACT_ADDRESS as `0x${string}`
 const USER_REGISTRY_ADDRESS = process.env.NEXT_PUBLIC_USERREGISTRY_CONTRACT_ADDRESS as `0x${string}`
-const WETH_ADDRESS = process.env.NEXT_PUBLIC_WETH_CONTRACT_ADDRESS as `0x${string}`
+const MOCK_ERC20_ADDRESS = process.env.NEXT_PUBLIC_MOCKERC20_CONTRACT_ADDRESS as `0x${string}`
 
 // Flow EVM Testnet explorer
 const FLOW_EXPLORER_BASE = "https://evm-testnet.flowscan.io"
 
-// WETH ABI (minimal)
-const WETH_ABI = [
+// MockERC20 ABI (minimal)
+const MOCK_ERC20_ABI = [
   {
-    inputs: [],
-    name: "deposit",
+    inputs: [{ name: "to", type: "address" }, { name: "amount", type: "uint256" }],
+    name: "mint",
     outputs: [],
-    stateMutability: "payable",
-    type: "function",
-  },
-  {
-    inputs: [{ name: "wad", type: "uint256" }],
-    name: "withdraw",
-    outputs: [],
-    stateMutability: "nonpayable", 
+    stateMutability: "nonpayable",
     type: "function",
   },
   {
@@ -133,7 +123,7 @@ const ClientOnlyUncleApp = () => {
 
 const UncleAppInternal = () => {
   const { address: connectedAddress, isConnected, chain } = useAccount()
-  const { writeContract, data: writeData, isPending: isWritePending, error: writeError } = useWriteContract()
+  const { writeContract, data: writeData, isPending: isWritePending } = useWriteContract()
   
   const [userMode, setUserMode] = useState<UserMode | null>(null)
   const [currentScreen, setCurrentScreen] = useState<ScreenState>("MODE_SELECTION")
@@ -171,13 +161,13 @@ const UncleAppInternal = () => {
       // Clear any other wallet connection data
       localStorage.removeItem('walletconnect')
       localStorage.removeItem('WALLETCONNECT_DEEPLINK_CHOICE')
-    } catch (error) {
+    } catch {
       // Ignore localStorage errors in SSR
     }
   }, [])
 
   // Wait for transaction receipt
-  const { isLoading: isTxLoading, isSuccess: isTxSuccess, isError: isTxError } = useWaitForTransactionReceipt({
+  const { isSuccess: isTxSuccess, isError: isTxError } = useWaitForTransactionReceipt({
     hash: currentTxHash as `0x${string}`,
   })
 
@@ -389,7 +379,7 @@ const UncleAppInternal = () => {
         functionName: "createLoanRequest",
         args: [
           parseEther(amount.toString()),
-          WETH_ADDRESS, // WETH token address for Flow EVM Testnet
+          MOCK_ERC20_ADDRESS, // MockERC20 test token address
           500, // 5% interest rate in basis points
           BigInt(7 * 24 * 60 * 60), // 7 days duration in seconds
           BigInt(0), // no collateral offered
@@ -423,17 +413,17 @@ const UncleAppInternal = () => {
         amount,
       })
 
-      // Step 1: Wrap ETH to WETH
-      toast("Step 1/3: Wrapping ETH to WETH...")
-      const wrapSuccess = await handleWrapETH(amount)
-      if (!wrapSuccess) {
+      // Step 1: Mint test tokens  
+      toast("Step 1/3: Minting test tokens...")
+      const mintSuccess = await handleMintTokens(amount)
+      if (!mintSuccess) {
         setPendingTransaction(null)
         return
       }
 
-      // Step 2: Approve WETH for P2P contract
-      toast("Step 2/3: Approving WETH for lending contract...")
-      const approveSuccess = await handleApproveWETH(amount)
+      // Step 2: Approve tokens for P2P contract
+      toast("Step 2/3: Approving tokens for lending contract...")
+      const approveSuccess = await handleApproveTokens(amount)
       if (!approveSuccess) {
         setPendingTransaction(null)
         return
@@ -443,7 +433,7 @@ const UncleAppInternal = () => {
       toast("Step 3/3: Creating loan offer...")
       setPendingTransaction({
         type: "loan_offer",
-        description: `Creating loan offer: ${amount} WETH at ${interestRate}% APR`,
+        description: `Creating loan offer: ${amount} TUSDC at ${interestRate}% APR`,
         amount,
       })
 
@@ -468,7 +458,7 @@ const UncleAppInternal = () => {
         functionName: "createLoanOffer",
         args: [
           parseEther(amount.toString()),
-          WETH_ADDRESS, // WETH token address for Flow EVM Testnet
+          MOCK_ERC20_ADDRESS, // MockERC20 test token address
           interestRate * 100, // convert to basis points
           BigInt(7 * 24 * 60 * 60), // 7 days duration
           BigInt(0), // no collateral required
@@ -484,7 +474,7 @@ const UncleAppInternal = () => {
   }
 
   // Handle vouching action
-  const handleVouchAction = async (vouchedForBorrowerName: string, vouchedAmount: number, message: string) => {
+  const handleVouchAction = async (vouchedForBorrowerName: string, vouchedAmount: number) => {
     if (!isConnected || !connectedAddress) {
       toast.error("Please connect your wallet first!")
       return
@@ -525,30 +515,31 @@ const UncleAppInternal = () => {
     }
   }
 
-  // Handle WETH wrapping
-  const handleWrapETH = async (amount: number) => {
+  // Handle test token minting
+  const handleMintTokens = async (amount: number) => {
     if (!isConnected || !connectedAddress) {
       toast.error("Please connect your wallet first!")
       return false
     }
 
     try {
+      // Mint test tokens instead of wrapping ETH
       await writeContract({
-        address: WETH_ADDRESS,
-        abi: WETH_ABI,
-        functionName: "deposit",
-        value: parseEther(amount.toString()),
+        address: MOCK_ERC20_ADDRESS,
+        abi: MOCK_ERC20_ABI,
+        functionName: "mint",
+        args: [connectedAddress, parseEther(amount.toString())],
       })
       return true
     } catch (error) {
-      console.error("Error wrapping ETH:", error)
-      toast.error("Failed to wrap ETH")
+      console.error("Error minting test tokens:", error)
+      toast.error("Failed to mint test tokens")
       return false
     }
   }
 
-  // Handle WETH approval for P2P contract
-  const handleApproveWETH = async (amount: number) => {
+  // Handle token approval for P2P contract
+  const handleApproveTokens = async (amount: number) => {
     if (!isConnected || !connectedAddress) {
       toast.error("Please connect your wallet first!")
       return false
@@ -556,15 +547,15 @@ const UncleAppInternal = () => {
 
     try {
       await writeContract({
-        address: WETH_ADDRESS,
-        abi: WETH_ABI,
+        address: MOCK_ERC20_ADDRESS,
+        abi: MOCK_ERC20_ABI,
         functionName: "approve",
         args: [P2P_LENDING_ADDRESS, parseEther(amount.toString())],
       })
       return true
     } catch (error) {
-      console.error("Error approving WETH:", error)
-      toast.error("Failed to approve WETH")
+      console.error("Error approving test tokens:", error)
+      toast.error("Failed to approve test tokens")
       return false
     }
   }
@@ -802,26 +793,26 @@ const UncleAppInternal = () => {
             <div className="space-y-3">
               <div className="flex space-x-2">
                 <button
-                  onClick={() => handleCreateLoanOffer(0.01, 5)} // 0.01 ETH for testing
+                  onClick={() => handleCreateLoanOffer(100, 5)} // 100 TUSDC for testing
                   className="flex-1 bg-green-600 text-white py-3 px-4 rounded-lg font-semibold disabled:opacity-50"
                   disabled={isWritePending}
                 >
-                  {isWritePending ? "Creating..." : "Offer 0.01 ETH (5% APR)"}
+                  {isWritePending ? "Creating..." : "Offer 100 TUSDC (5% APR)"}
                 </button>
                 <button
-                  onClick={() => handleCreateLoanOffer(0.025, 4)} // 0.025 ETH for testing
+                  onClick={() => handleCreateLoanOffer(250, 4)} // 250 TUSDC for testing
                   className="flex-1 bg-green-600 text-white py-3 px-4 rounded-lg font-semibold disabled:opacity-50"
                   disabled={isWritePending}
                 >
-                  {isWritePending ? "Creating..." : "Offer 0.025 ETH (4% APR)"}
+                  {isWritePending ? "Creating..." : "Offer 250 TUSDC (4% APR)"}
                 </button>
               </div>
               <button
-                onClick={() => handleCreateLoanOffer(0.05, 3)} // 0.05 ETH for testing
+                onClick={() => handleCreateLoanOffer(500, 3)} // 500 TUSDC for testing
                 className="w-full bg-green-600 text-white py-3 px-4 rounded-lg font-semibold disabled:opacity-50"
                 disabled={isWritePending}
               >
-                {isWritePending ? "Creating..." : "Offer 0.05 ETH (3% APR)"}
+                {isWritePending ? "Creating..." : "Offer 500 TUSDC (3% APR)"}
               </button>
             </div>
           </div>
