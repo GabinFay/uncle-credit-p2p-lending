@@ -15,8 +15,8 @@ export const enabledChains = targetNetworks.find((network: Chain) => network.id 
 export const wagmiConfig = createConfig({
   chains: enabledChains,
   connectors: wagmiConnectors,
-  ssr: true,
-  // Disable auto-connect
+  // ssr: true, // Temporarily disable SSR for wagmi to debug initialization
+  // Disable auto-connect and discovery of multiple injected providers
   multiInjectedProviderDiscovery: false,
   client({ chain }) {
     let rpcFallbacks = [http()];
